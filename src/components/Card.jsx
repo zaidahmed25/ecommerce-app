@@ -6,10 +6,12 @@ import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import {  Navigate, useNavigate } from 'react-router-dom';
+import useSavePost from '../context/savePost';
 
 export default function MediaCard({title, body, id}) {
 
     const Navigate = useNavigate()
+    const { setSavePost , savePost } = useSavePost();
     
     const gotoproduct = ()=> {
         Navigate(`/product/${id}`)
@@ -18,6 +20,7 @@ export default function MediaCard({title, body, id}) {
     const savepost = (event)=> {
         event.stopPropagation()
         console.log('savepost clicked');
+        setSavePost([...savePost])
     }
 
 
